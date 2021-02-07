@@ -24,3 +24,42 @@ img{
     text-align: center;
     border-radius: 10px;
 }
+.single-meal.active{
+    color: red;
+}
+.meal-box-detail{
+    width: 700px;
+    height: 90%;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    overflow: scroll;
+    opacity: 0;
+    visibility: hidden;
+}
+.show{
+    opacity: 1;
+    visibility: visible;
+}
+.meal-box-detail img{
+    margin-bottom: 15px;
+}
+#close{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 30px;
+    height: 30px;
+    background: tomato;
+    color: #fff;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+}
