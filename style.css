@@ -1,0 +1,26 @@
+
+.form-group{
+    margin-bottom: 40px;
+}
+section{
+    padding: 100px 0;
+}
+#meals{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+}
+img{
+    max-width: 100%;
+    width: 100%;
+}
+#meals h4{
+    padding: 20px;
+    margin: 0;
+}
+.single-meal{
+    background-color: #F8F7F5;
+    border: 5px;
+    text-align: center;
+    border-radius: 10px;
+}
