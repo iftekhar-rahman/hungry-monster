@@ -63,3 +63,18 @@ img{
     display: block;
     cursor: pointer;
 }
+
+.notfound{
+    display: none;
+}
+.notfound.addtext{
+    display: block;
+}
+#ingredients-list{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+div#ingredients-thumb img {
+    max-width: 320px;
+}

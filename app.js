@@ -2,6 +2,7 @@
 /*----------------- Meal item list ---------------------*/ 
 const containerDiv = document.getElementById('meals');
 const searchBtn = document.getElementById('submit');
+const notFound = document.getElementById('notfound');
 
 searchBtn.addEventListener('click', mealList => {
     const mealInput = document.getElementById('meal-input').value.trim();
@@ -16,32 +17,45 @@ const displayMeals = mealBox => {
         let mealsDetails = '';
         mealBox.forEach(meal => {
             mealsDetails += `
-                <div class="single-meal" data-id="${meal.idMeal}">
+                <div onclick="getContent()" class="single-meal" data-id="${meal.idMeal}">
                     <img src="${meal.strMealThumb}">
                     <h4>${meal.strMeal}</h4>
                 </div>
             `;
             containerDiv.innerHTML = mealsDetails;
         });
+        notFound.classList.remove('addtext');
     } else{
-        alert("Sorry, we didn't find anything.")
+        notFound.classList.add('addtext');
     }
-    
 }
 
-// /*--------  Meal Details -----------*/ 
-// const mealContainer = document.getElementById('meals');
-// // const recipeClose = document.getElementById('close');
-// mealContainer.addEventListener('click', function(event){
-//     event.target.classList.add('single-meal');
 
-// }); 
+/*---------- Single Content ---------------*/ 
+const getContent = () =>{
+    const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken_breast`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => displayIngredients(data.meals))
+}
 
-// // let mealItems = document.getElementsByClassName('single-meal');
-// // for (let i = 0; i < mealItems.length; i++) {
-// //     let mealItem = mealItems[i];
-// //     mealItem.onclick = function(){
-// //         this.classList.add('active');
-// //     }
-    
-// }
+const displayIngredients = ingredients =>{
+    const ingredientsThumb = document.getElementById('ingredients-thumb');
+    // const mealTitle = document.getElementById('title');
+    const ingredientsList = document.getElementById('ingredients-list');
+
+    const thumbDiv = document.createElement('div');
+    thumbDiv.innerHTML = `
+        <img src="${ingredients[0].strMealThumb}"/>
+    `
+    ingredientsThumb.appendChild(thumbDiv);
+
+    ingredients.forEach(ingredient => {
+        const li = document.createElement('li');
+         
+        li.innerText = ingredient.strMeal;
+        ingredientsList.appendChild(li);
+
+    });
+}
+
